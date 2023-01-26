@@ -6,7 +6,7 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 00:26:47 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/01/17 21:38:46 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/01/18 16:41:09 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
 	if (little_len == 0)
 		return ((char *)big);
 	if (len < little_len)
-		return NULL;
-
+		return (0);
 	while (big <= end)
 	{
 		if (*big == *little && ft_strncmp(big, little, little_len) == 0)
@@ -32,22 +31,3 @@ char *ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
-
-
-
-
- // obtiene la longitud de la cadena little
- // si little esta vacio, devuelve el puntero de big
- // si len es menor que la longitud de little, devuelve NULL
- // se establece el puntero final del recorrido
- // mientras big no sobrepase el puntero final
-// si big y little tienen el mismo caracter inicial y la comparación de
-// los siguientes caracteres es igual a 0, devuelve el puntero de big
- // incrementa el puntero de big
-
-
-
-
-
-
-

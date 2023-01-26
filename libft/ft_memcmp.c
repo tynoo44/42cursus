@@ -6,7 +6,7 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 00:18:04 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/01/17 00:23:01 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:23:05 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int ft_memcmp(const void *p1, const void *p2, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		if (((char *)p1)[i] == ((char *)p2)[i])
+		if (((unsigned char *)p1)[i] == ((unsigned char *)p2)[i])
 			i++;
-		else if(((char *)p1)[i] > ((char *)p2)[i])
+		else if(((unsigned char *)p1)[i] > ((unsigned char *)p2)[i])
 			return (1);
 		else
 			return (-1);

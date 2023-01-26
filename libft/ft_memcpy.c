@@ -6,7 +6,7 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 17:45:03 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/01/16 21:28:21 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/01/25 19:30:18 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 void    *ft_memcpy(void *dst, const void *src, size_t n)
 {
-    char   *d;
-
-	d = 0;
-	ft_strlcpy(d, dst, ft_strlen(dst));
-    ft_strlcpy(dst, src, n);
-    return (d);
+	size_t i;
+	
+	i = 0;
+	while (n != 0 && i < n && (dst || src))
+	{
+		((char *)dst)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dst);
 }
