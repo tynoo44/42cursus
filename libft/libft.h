@@ -13,7 +13,9 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <stdlib.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
 int ft_atoi(const char *str);
 void ft_bzero(void *s, size_t n);
@@ -36,5 +38,10 @@ char    *ft_strrchr(const char *s, int c);
 int	ft_tolower(int c);
 int	ft_toupper(int c);
 char *ft_strnstr(const char *big, const char *little, size_t len);
+void *calloc(size_t nmemb, size_t size);
+char *ft_strdup(const char *s);
+char	*ft_substr(char const *s, unsigned int start, size_t len);
+char *ft_strjoin(char const *s1, char const *s2);
+char *ft_strtrim(char const *s1, char const *set);
 
 #endif
