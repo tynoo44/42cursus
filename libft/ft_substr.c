@@ -6,7 +6,7 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:06:40 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/01/27 19:16:38 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:59:17 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ char    *ft_substr(char const *s1, unsigned int start, size_t len)
 {
     char    *s2;
     size_t  s1len;
+	
     s1len = ft_strlen(s1);
     if (s1len < start)
     {

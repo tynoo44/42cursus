@@ -3,11 +3,16 @@
 
 char    *ft_itoa(int n)
 {
-    int     temp;
-    int     len;
-    char    *str;
+    int		temp;
+    int		len;
+    char	*str;
 
-	
+	if (n == -2147483648)
+	{
+		str = malloc(12);
+		ft_strlcpy(str, "-2147483648", 12);
+		return (str);
+	}
     temp = n;
     len = (n <= 0) ? 1 : 0;
     while (temp)

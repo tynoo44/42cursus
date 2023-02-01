@@ -1,4 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/01 11:29:43 by ralonso-          #+#    #+#             */
+/*   Updated: 2023/02/01 11:29:44 by ralonso-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./libft.h"
+
+int ft_count_words(char const *s, char c)
+{
+    int i;
+    int words;
+
+    i = 0;
+    words = 0;
+    while (s[i])
+    {
+        while (s[i] == c)
+            i++;
+        if (s[i] && s[i] != c)
+        {
+            words++;
+            while (s[i] && s[i] != c)
+                i++;
+        }
+    }
+    return (words);
+}
 
 char    **ft_split(char const *s, char c)
 {
@@ -9,8 +42,9 @@ char    **ft_split(char const *s, char c)
 
     i = 0;
     k = 0;
-    if (!s || !(str = (char **)malloc(sizeof(char *) * ft_strlen(s))))
-        return (NULL);
+	
+    if (!s || !(str = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1))))
+        return (0);
     while (s[i])
     {
         while (s[i] == c)
@@ -24,7 +58,7 @@ char    **ft_split(char const *s, char c)
             k++;
         }
     }
-    str[k] = NULL;
+    str[k] = 0;
     return (str);
 }
 /*

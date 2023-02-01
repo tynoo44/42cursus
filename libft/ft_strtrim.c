@@ -6,7 +6,7 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 18:06:31 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/01/27 18:07:50 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:55:18 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char *ft_strtrim(char const *s1, char const *set)
     size_t len;
     char *str;
 
-    if (!s1 || !set)
-        return (NULL);
     start = 0;
     end = ft_strlen(s1) - 1;
     while (s1[start] && ft_strchr(set, s1[start]))

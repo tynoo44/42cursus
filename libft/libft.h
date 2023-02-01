@@ -6,7 +6,7 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 18:01:18 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/01/17 21:31:12 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/02/01 12:15:19 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ char    *ft_strrchr(const char *s, int c);
 int	ft_tolower(int c);
 int	ft_toupper(int c);
 char *ft_strnstr(const char *big, const char *little, size_t len);
-void *calloc(size_t nmemb, size_t size);
+void *ft_calloc(size_t nmemb, size_t size);
 char *ft_strdup(const char *s);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 char *ft_strjoin(char const *s1, char const *s2);
@@ -51,6 +51,6 @@ void ft_striteri(char *s, void (*f)(unsigned int, char*));
 void ft_putchar_fd(char c, int fd);
 void ft_putstr_fd(char *s, int fd);
 void ft_putendl_fd(char *s, int fd);
-
+void ft_putnbr_fd(int n, int fd);
 
 #endif
