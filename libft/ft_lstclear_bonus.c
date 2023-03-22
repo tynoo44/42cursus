@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 16:10:30 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/03/22 18:33:35 by ralonso-         ###   ########.fr       */
+/*   Created: 2023/03/22 18:15:16 by ralonso-          #+#    #+#             */
+/*   Updated: 2023/03/22 18:16:44 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-int	ft_isalpha(int c)
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	return (0);
+	t_list	*auxnode;
+
+	while ((*lst) != NULL)
+	{
+		auxnode = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = auxnode;
+	}
 }
