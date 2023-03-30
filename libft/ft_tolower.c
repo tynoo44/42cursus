@@ -6,15 +6,15 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:26:51 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/01/12 18:05:54 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:44:18 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
 	if (c >= 65 && c <= 90)
 		c = c + 32;
-	return(c);
+	return (c);
 }

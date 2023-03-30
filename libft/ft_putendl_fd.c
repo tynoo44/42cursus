@@ -1,7 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/23 20:16:54 by ralonso-          #+#    #+#             */
+/*   Updated: 2023/03/23 20:17:07 by ralonso-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "./libft.h"
 
-void ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-    ft_putstr_fd(s, fd);
-    ft_putchar_fd('\n', fd);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

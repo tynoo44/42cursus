@@ -6,7 +6,7 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:31:03 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/02/01 12:09:48 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/03/23 20:32:16 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 char	*ft_strchr(const char *s, int c)
 {
 	while (*s != (char)c)
-    {
-        if (*s++ == 0)
-            return (0);
-    }
-    return ((char *)s);
+	{
+		if (*s++ == 0)
+			return (0);
+	}
+	return ((char *)s);
 }
