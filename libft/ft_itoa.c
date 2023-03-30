@@ -6,13 +6,13 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 18:53:32 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/03/23 19:59:03 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:36:48 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-int	get_num_len(int n)
+static int	get_num_len(int n)
 {
 	int	len;
 
@@ -28,7 +28,7 @@ int	get_num_len(int n)
 	return (len);
 }
 
-char	*itoa_helper(int n, int len)
+static char	*itoa_helper(int n, int len)
 {
 	char	*str;
 

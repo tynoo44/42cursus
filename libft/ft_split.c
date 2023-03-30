@@ -6,13 +6,13 @@
 /*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/01 11:29:43 by ralonso-          #+#    #+#             */
-/*   Updated: 2023/03/23 20:31:03 by ralonso-         ###   ########.fr       */
+/*   Updated: 2023/03/30 20:36:05 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./libft.h"
 
-int	ft_count_words(char const *s, char c)
+static int	ft_count_words(char const *s, char c)
 {
 	int	i;
 	int	words;
