@@ -1,33 +1,72 @@
 #include "get_next_line.h"
 
-int	get_next_line(int fd, char **line)
-{
-	static char	*rest;
-	char		buf[BUFFER_SIZE + 1];
-	char		*ptr;
-	ssize_t		n;
 
-	if (!line || fd < 0 || BUFFER_SIZE <= 0)
-		return (-1);
-	*line = NULL;
-	if (rest && (*line = ft_strdup(rest)) && (ptr = ft_strchr(*line, '\n')))
+
+
+char	*ft_readfile(int fd, char *mem, char *backup)
+{
+	int	readed;
+	char	*temp;
+
+	readed = 1;
+	while (readed != '\0')
 	{
-		*ptr = '\0';
-		rest = ft_strdup(ptr + 1);
-		return (1);
+		readed = read(fd, mem, BUFFER_SIZE);
+		if(readed == -1)
+			return (0);
+		else if(readed == 0)
+			break;
+		mem[readed] = '\0';
+		if (!backup)
+			backup = ft_strdup("");
+		temp = backup;
+		backup = ft_strjoin(temp, mem);
+		free(temp);
+		
+		printf("AAAAAAAA%s", mem);
+		if (ft_strchr (mem, '\n'))
+			break ;
 	}
-	while ((n = read(fd, buf, BUFFER_SIZE)) > 0)
-	{
-		buf[n] = '\0';
-		*line = ft_strjoin(*line, buf);
-		if ((ptr = ft_strchr(*line, '\n')))
-		{
-			*ptr = '\0';
-			rest = ft_strdup(ptr + 1);
-			return (1);
-		}
-	}
-	if (n < 0)
-		return (-1);
-	return ((*line && **line) ? 1 : 0);
+}
+
+char	*ft_extract(char *line)
+{
+
+}
+
+char	*get_next_line(int fd)
+{
+	char		*line;
+	char		*mem;
+	static char	*backup;
+
+	if (BUFFER_SIZE <= 0 || fd < 0)
+		return (0);
+	mem = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!mem)
+		return (0);
+	line = ft_readfile(fd, mem, backup);
+	free(mem);
+	if (!line)
+		return (0);
+	
+}
+
+int	main(int argc, char **argv)
+{
+	int		fd;
+	char	*line;
+
+
+	fd = open(argv[1], O_RDONLY);
+	line = get_next_line(fd);
+	printf("1%s\n", line);
+
+	/*line = get_next_line(fd);
+	printf("2%s\n", line);
+
+	line = get_next_line(fd);
+	printf("3%s\n", line);*/
+	close(fd);
+	return (0);
 }
