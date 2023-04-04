@@ -72,7 +72,7 @@ char	*ft_strchr(const char *s, int c)
 		if (*s++ == 0)
 			return (0);
 	}
-	return ((char *)s);
+	return ((char *)++s);
 }
 
 char	*ft_substr(char const *s1, unsigned int start, size_t len)
