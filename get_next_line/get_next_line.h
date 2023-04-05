@@ -3,11 +3,11 @@
 
 # include <stdlib.h>
 # include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-
-# define BUFFER_SIZE 42 // Tamaño del buffer utilizado para leer del archivo
-
+# include <stdio.h>
+# include <fcntl.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42 // Tamaño del buffer utilizado para leer del archivo
+# endif
 char	*get_next_line(int fd);
 char	*ft_strdup(const char *s);
 void	*ft_memmove(void *dst, const void *src, size_t n);
