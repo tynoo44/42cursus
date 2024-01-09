@@ -1,74 +1,114 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/26 04:38:39 by raul              #+#    #+#             */
+/*   Updated: 2023/12/26 04:52:59 by raul             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
-int	gnl_finder(char	*backup)
+size_t	ft_strlen(const char *s)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
-	while (backup[i] != 0 && backup[i] != '\n')
+	while (s[i] != 0)
 		i++;
-	if (backup[i] == '\n')
-		return (i);
-	else
-		return (0);
+	return (i);
 }
 
-char	*gnl_gl(int fd, char **backup)
+char	*ft_find_new(char *str)
 {
-	int		bytes_readed;
-	char	*line;
-	char	*mem;
-	int		pos;
-	
-	bytes_readed = 1;
-	while (bytes_readed != 0)
-	{
+	int		i;
+	char	*aux;
 
-		mem = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		bytes_readed = read(fd, mem, BUFFER_SIZE);
-		if(bytes_readed == -1)
-			return (0);
-		else if(bytes_readed == 0)
-			break;
-		mem[bytes_readed] = '\0';
-		if (!*backup)
-			*backup = ft_strdup("");
-		*backup = ft_strjoin(*backup, mem);
-		free(mem);
-		if(ft_strchr(*backup, '\n') != 0)
-			break;
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (str[i] && str[i] != '\n')
+		i++;
+	aux = malloc(i + 2);
+	if (!aux)
+		return (NULL);
+	aux[i + 1] = '\0';
+	while (i >= 0)
+	{
+		aux[i] = str[i];
+		i--;
 	}
-	pos = gnl_finder(*backup);
-	line = ft_substr(*backup, 0, pos + 1);
-	*backup = ft_substr(*backup, pos + 1, (ft_strlen(*backup) - (pos + 1)));
-	return (line);
+	return (aux);
+}
+
+char	*ft_update_schar(char *str, int i, int j)
+{
+	char	*aux;
+
+	if (ft_strchr(str, '\n') == NULL)
+	{
+		if (str)
+			free(str);
+		return (NULL);
+	}
+	while (str[i] != '\0' && str[i] != '\n')
+		i++;
+	i = i + 1;
+	if (str[i - 1] == '\0')
+		return (str);
+	aux = malloc((ft_strlen(str) - i) + 1);
+	if (!aux)
+		return (NULL);
+	while (str[i] != 0)
+		aux[j++] = str[i++];
+	aux[j] = '\0';
+	free(str);
+	return (aux);
+}
+
+char	*read_file(int fd, char *schar)
+{
+	char		temp[BUFFER_SIZE + 1];
+	int			n;
+
+	n = 1;
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (0);
+	if (!schar)
+		schar = ft_strdup("");
+	while (n > 0 && ft_strchr(schar, '\n') == NULL)
+	{
+		ft_bzero(temp, BUFFER_SIZE + 1);
+		n = read(fd, temp, BUFFER_SIZE);
+		if (n > 0)
+			schar = ft_strjoin(schar, temp);
+	}
+	if (n < 0)
+	{
+		free(schar);
+		schar = NULL;
+		return (0);
+	}
+	return (schar);
 }
 
 char	*get_next_line(int fd)
 {
+	static char	*schar;
 	char		*line;
-	static char	*backup;
 
-	if (BUFFER_SIZE <= 0 || fd < 0)
+	schar = read_file(fd, schar);
+	if (!schar)
 		return (0);
-	line = gnl_gl(fd, &backup);
-	return(line);
+	line = ft_find_new(schar);
+	schar = ft_update_schar(schar, 0, 0);
+	if (!*line)
+	{
+		free(line);
+		return (NULL);
+	}
+	return (line);
 }
-
-/*int	main(int argc, char **argv)
-{
-	int		fd;
-	char	*line;
-
-	fd = open(argv[1], O_RDONLY);
-	line = get_next_line(fd);
-	printf("1%s\n", line);
-
-	line = get_next_line(fd);
-	printf("2%s\n", line);
-
-	line = get_next_line(fd);
-	printf("3%s\n", line);
-	close(fd);
-	return (0);
-}*/
