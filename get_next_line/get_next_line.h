@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 04:38:54 by raul              #+#    #+#             */
-/*   Updated: 2023/12/26 04:38:55 by raul             ###   ########.fr       */
+/*   Created: 2024/01/14 16:33:43 by ralonso-          #+#    #+#             */
+/*   Updated: 2024/01/14 16:34:06 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@
 
 char	*get_next_line(int fd);
 char	*read_file(int fd, char *schar);
+char	*ft_update_schar(char *str, int i, int j);
+char	*ft_find_new(char *str, int i);
 char	*ft_strdup(const char *s);
 char	*ft_strjoin(char *s1, char *s2);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

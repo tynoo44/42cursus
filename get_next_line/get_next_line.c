@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: raul <raul@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: ralonso- <ralonso-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/26 04:38:39 by raul              #+#    #+#             */
-/*   Updated: 2023/12/26 04:52:59 by raul             ###   ########.fr       */
+/*   Created: 2024/01/14 16:33:29 by ralonso-          #+#    #+#             */
+/*   Updated: 2024/01/14 16:34:09 by ralonso-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-char	*ft_find_new(char *str)
+char	*ft_find_new(char *str, int i)
 {
-	int		i;
 	char	*aux;
 
 	if (!str)
 		return (NULL);
-	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
 	aux = malloc(i + 2);
@@ -103,7 +101,7 @@ char	*get_next_line(int fd)
 	schar = read_file(fd, schar);
 	if (!schar)
 		return (0);
-	line = ft_find_new(schar);
+	line = ft_find_new(schar, 0);
 	schar = ft_update_schar(schar, 0, 0);
 	if (!*line)
 	{
